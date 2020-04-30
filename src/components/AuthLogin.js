@@ -1,41 +1,41 @@
-import React, { Component } from 'react'
-import firebase from './firebase'
+// import React, { Component } from 'react'
+// import firebase from './firebase/'
 
-class Auth extends Component {
-  state = {
-    user: null
-  }
+// class Auth extends Component {
+//   state = {
+//     user: null
+//   }k
 
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
-      this.setState({ user })
-    })
-  }
+//   componentDidMount() {
+//     firebase.auth().onAuthStateChanged(user => {
+//       this.setState({ user })
+//     })
+//   }
 
-  login() {
-    const provider = new firebase.auth.GoogleAuthProvider()
-    firebase.auth().signInWithRedirect(provider)
-  }
+//   login() {
+//     const provider = new firebase.auth.GoogleAuthProvider()
+//     firebase.auth().signInWithRedirect(provider)
+//   }
 
-  logout() {
-    firebase.auth().signOut()
-  }
+//   logout() {
+//     firebase.auth().signOut()
+//   }
 
-  render() {
-    return (
-      <div className="App">
-        <p className="App-intro">
-          UID: {this.state.user && this.state.user.uid}
-        </p>
+//   render() {
+//     return (
+//       <div className="App">
+//         <p className="App-intro">
+//           UID: {this.state.user && this.state.user.uid}
+//         </p>
 
-        {this.state.user ? (
-          <button onClick={this.logout}>Google Logout</button>
-        ) : (
-          <button onClick={this.login}>Google Login</button>
-        )}
-      </div>
-    )
-  }
-}
+//         {this.state.user ? (
+//           <button onClick={this.logout}>Google Logout</button>
+//         ) : (
+//           <button onClick={this.login}>Google Login</button>
+//         )}
+//       </div>
+//     )
+//   }
+// }
 
-export default Auth
+// export default Auth

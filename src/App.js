@@ -3,14 +3,7 @@ import React, { Component } from 'react';
 import { firebaseDb } from './firebase/index'
 import Message from './components/Message'
 import ChatBox from './components/ChatBox'
-import ButtonAppBar from "./components/ButtonAppBar"
-import { makeStyles } from "@material-ui/core/styles"
 
-const useStyles = makeStyles({
-  root: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
-  }
-})
 const messagesRef = firebaseDb.ref('messages')
 
 class App extends Component {
@@ -21,16 +14,15 @@ class App extends Component {
     this.state = {
       text : "",
       user_name: "",
-      profile_image: "",
       messages : []
     }
   }
-  //view
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <ButtonAppBar />
+          <h2>Chat</h2>
         </div>
         <div className="MessageList">
           {this.state.messages.map((m, i) => {
@@ -41,24 +33,22 @@ class App extends Component {
       </div>
     );
   }
-  //
+  
   onTextChange(e) {
+    console.log("jj")
     if(e.target.name === 'user_name') {
       this.setState({
         "user_name": e.target.value,
       });
-    } else if(e.target.name === 'profile_image') {
-      this.setState({
-        "profile_image": e.target.value,
-      });
-    } else if(e.target.name === 'text') {
+    }  else if(e.target.name === 'text') {
       this.setState({
         "text": e.target.value,
       });
     }
   }
-  //
+  
   onButtonClick() {
+    console.log("hh")
     if(this.state.user_name === "") {
       alert('user_name empty')
       return
@@ -68,11 +58,10 @@ class App extends Component {
     }
     messagesRef.push({
       "user_name" : this.state.user_name,
-      "profile_image" : this.state.profile_image,
       "text" : this.state.text,
     })
   }
-  
+
   componentDidMount() {
     messagesRef.on('child_added', (snapshot) => {
       const m = snapshot.val()
@@ -89,6 +78,7 @@ class App extends Component {
       });
     })
   }
+
 
 }
 

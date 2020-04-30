@@ -32,7 +32,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Chat App
           </Typography>
-          <Button color="inherit" onClicke={Auth}>Login-Button</Button>
+          <Button color="inherit">Login-Button</Button>
         </Toolbar>
       </AppBar>
     </div>
